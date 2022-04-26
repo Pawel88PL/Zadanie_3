@@ -13,21 +13,35 @@ namespace Zadanie_3
             
             Console.WriteLine("Program oblicza największy wspólny dzielnik dwóch dodatnich liczb całkowitych.");
             Console.WriteLine("Wykorzystano algorytm Euklidesa nie używając operacji dzielenia.");
+            Console.WriteLine("A - B = (n - m) * k");
             Console.WriteLine();
 
-            int firstNumber, secondNumber, commonDivisor;
-
-            commonDivisor = 0;
+            int numberA, numberB, numberACoppy, numberBCoppy;
 
             Console.Write("Podaj pierwszą liczbę: ");
-            firstNumber = int.Parse(Console.ReadLine());
+            numberA = int.Parse(Console.ReadLine());
 
             Console.Write("Podaj drugą liczbę: ");
-            secondNumber = int.Parse(Console.ReadLine());
+            numberB = int.Parse(Console.ReadLine());
 
+            numberACoppy = numberA;
+            numberBCoppy = numberB;
+
+            while (numberA != numberB)
+            {
+                if (numberA > numberB)
+                {
+                    numberA -= numberB;
+                }
+                else
+                {
+                    numberB -= numberA;
+                }
+            }
+            
 
             Console.WriteLine();
-            Console.WriteLine($"Największy wspólny dzielnik liczb ({firstNumber}, {secondNumber}) wynosi: " + commonDivisor);
+            Console.WriteLine($"Największy wspólny dzielnik liczb ({numberACoppy}, {numberBCoppy}) wynosi: " + numberA);
 
             Console.ReadLine();
         }
