@@ -10,40 +10,52 @@ namespace Zadanie_3
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Program oblicza największy wspólny dzielnik dwóch dodatnich liczb całkowitych.");
-            Console.WriteLine("Wykorzystano algorytm Euklidesa nie używając operacji dzielenia.");
-            Console.WriteLine("A - B = (n - m) * k");
-            Console.WriteLine();
 
+            // Zadeklarowanie zmiennych.
             int numberA, numberB, numberACoppy, numberBCoppy;
+            string czyKontynuacja;
 
-            Console.Write("Podaj pierwszą liczbę: ");
-            numberA = int.Parse(Console.ReadLine());
-
-            Console.Write("Podaj drugą liczbę: ");
-            numberB = int.Parse(Console.ReadLine());
-
-            numberACoppy = numberA;
-            numberBCoppy = numberB;
-
-            while (numberA != numberB)
+            do
             {
-                if (numberA > numberB)
+                // Opis programu.
+                Console.WriteLine("Program oblicza największy wspólny dzielnik dwóch dodatnich liczb całkowitych.");
+                Console.WriteLine("Wykorzystano algorytm Euklidesa nie używając operacji dzielenia.");
+                Console.WriteLine();
+
+                // Nadanie zmiennym wartości pobranej od użytkownika
+                Console.Write("Podaj pierwszą liczbę: ");
+                numberA = int.Parse(Console.ReadLine());
+                Console.Write("Podaj drugą liczbę: ");
+                numberB = int.Parse(Console.ReadLine());
+
+                // Stworzenie kopii pobranych zmiennych dla liczb "a" i "b".
+                numberACoppy = numberA;
+                numberBCoppy = numberB;
+
+                // Wykonanie działania w pętli.
+                while (numberA != numberB)
                 {
-                    numberA -= numberB;
+                    if (numberA > numberB)
+                    {
+                        numberA -= numberB;
+                    }
+                    else
+                    {
+                        numberB -= numberA;
+                    }
                 }
-                else
-                {
-                    numberB -= numberA;
-                }
+
+                // Wyświetlenie wyniku i zapytanie o kontynuację działania programu.
+                Console.WriteLine();
+                Console.WriteLine($"Największy wspólny dzielnik liczb ({numberACoppy}, {numberBCoppy}) wynosi: " + numberA);
+                Console.WriteLine();
+                Console.WriteLine("Czy zakończyć działanie programu? (tak/nie)");
+                czyKontynuacja = Console.ReadLine();
+                Console.WriteLine();
+
+
             }
-            
-
-            Console.WriteLine();
-            Console.WriteLine($"Największy wspólny dzielnik liczb ({numberACoppy}, {numberBCoppy}) wynosi: " + numberA);
-
-            Console.ReadLine();
+            while (czyKontynuacja == "nie");
         }
     }
 }
